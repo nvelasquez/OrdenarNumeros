@@ -6,7 +6,7 @@ import java.io.*;
 public class OrdenarNumeros {
   
   //ordena los numeros de menor a mayor
-  public static void ordenar(int a[], int c){
+  private static void sort(int a[], int c){
     for (int i = 1; i < c; i++){
       int count    = i;
       int newArray = a[i];
@@ -23,22 +23,14 @@ public class OrdenarNumeros {
   private static Object resizeArray (Object oldArray, int newSize) {
    int oldSize = java.lang.reflect.Array.getLength(oldArray);
    Class elementType = oldArray.getClass().getComponentType();
-   Object newArray = java.lang.reflect.Array.newInstance(
-         elementType, newSize);
+   Object newArray = java.lang.reflect.Array.newInstance(elementType, newSize);
    int preserveLength = Math.min(oldSize, newSize);
-   if (preserveLength > 0)
+   
+   if (preserveLength > 0){
       System.arraycopy(oldArray, 0, newArray, 0, preserveLength);
-   return newArray; }
-  
-  public static void redimensionarArray(int num[], int i){
-    if (i > num.length){
-      int[] num2 = new int[i];
-      if (num != null){
-	System.arraycopy(num, 0, num2, 0, Math.min(num.length, num2.length));
-      }
-      num = num2;
-    }
-  }
+   }
+   return newArray; 
+   }
   
   //Main: ejecuta los metodos de ordenar y redimensionar para pedir por pantalla y dar salida al nuevo array.
   public static void main (String[] args){
@@ -73,7 +65,7 @@ public class OrdenarNumeros {
     System.out.println();
     System.out.println("De la manera que se ordenaron");
     
-    ordenar(in, in.length);
+    sort(in, in.length);
     for (i = 0; i < in.length; i++){
       System.out.print(in[i]+" ");
     }
